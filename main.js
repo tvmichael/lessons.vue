@@ -3,7 +3,7 @@ const app = Vue.createApp({
         return {
             product: 'Socks',
             image: './assets/images/socks-adult-black.jpg',
-            inventory: 8,
+            inventory: 6,
             details: ['50% cotton', '30% wool', '20% polyester'],
             variants: [
                     {id: 1, color:'black', image: './assets/images/socks-adult-black.jpg'},
@@ -14,7 +14,10 @@ const app = Vue.createApp({
     },
     methods:{
         addToCart() {
-            this.cart += 1;
+            if(this.inventory > 0) {
+                this.cart += 1;
+                this.inventory --;
+            }
         },
         updateImage(image) {
             this.image = image;

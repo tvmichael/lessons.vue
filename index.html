@@ -24,6 +24,8 @@
                     <div class="col">
                         <h1>{{product}}</h1>
                         <p v-if="inventory >= 10">In Stock</p>
+                        <p v-else-if="inventory < 10 && inventory > 0">Almost sold out!</p>
+                        <p v-else>Out of Stock</p>
                     </div>
                     <div class="col-2">
                         <p>Cart: {{cart}}</p>
@@ -31,20 +33,28 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <p v-else-if="inventory < 10 && inventory > 0">Almost sold out!</p>
-                        <p v-else>Out of Stock</p>
-
                         <ul class="list-group">
                             <li v-for="detail in details" class="list-group-item">{{detail}}</li>
                         </ul>
 
                         <br>
                         <ul class="list-group list-group-horizontal">
-                            <li v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)" class="list-group-item">{{variant.color}}</li>
+                            <li v-for="variant in variants"
+                                :key="variant.id"
+                                @mouseover="updateImage(variant.image)"
+                                class="list-group-item">
+                                {{variant.color}}
+                            </li>
                         </ul>
 
                         <br>
-                        <button v-on:click="addToCart" type="button" class="btn btn-secondary">Add to cart</button>
+                        <button
+                            v-on:click="addToCart"
+                            :disabled="inventory <= 0"
+                            type="button"
+                            class="btn btn-secondary">
+                            Add to cart
+                        </button>
                     </div>
                 </div>
             </div>
