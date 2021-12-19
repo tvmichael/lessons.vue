@@ -9,8 +9,8 @@
 <body>
     <div id="app" class="container">
         <div class="row">
-            <div class="col">
-                <div class="card" style="width: 18rem;">
+            <div class="col-4">
+                <div class="card">
                     <img v-bind:src="image" class="card-img-top" v-bind:alt="product">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
@@ -19,20 +19,34 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <h1>{{product}}</h1>
-                <p v-if="inventory >= 10">In Stock</p>
-                <p v-else-if="inventory < 10 && inventory > 0">Almost sold out!</p>
-                <p v-else>Out of Stock</p>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col">
+                        <h1>{{product}}</h1>
+                        <p v-if="inventory >= 10">In Stock</p>
+                    </div>
+                    <div class="col-2">
+                        <p>Cart: {{cart}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p v-else-if="inventory < 10 && inventory > 0">Almost sold out!</p>
+                        <p v-else>Out of Stock</p>
 
-                <ul class="list-group">
-                    <li v-for="detail in details" class="list-group-item">{{detail}}</li>
-                </ul>
+                        <ul class="list-group">
+                            <li v-for="detail in details" class="list-group-item">{{detail}}</li>
+                        </ul>
 
-                <br>
-                <ul class="list-group list-group-horizontal">
-                    <li v-for="variant in variants" :key="variant.id" class="list-group-item">{{variant.color}}</li>
-                </ul>
+                        <br>
+                        <ul class="list-group list-group-horizontal">
+                            <li v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)" class="list-group-item">{{variant.color}}</li>
+                        </ul>
+
+                        <br>
+                        <button v-on:click="addToCart" type="button" class="btn btn-secondary">Add to cart</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
