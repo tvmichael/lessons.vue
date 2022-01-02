@@ -10,12 +10,23 @@
     <div class="container">
         <div id="components" class="col">
             <h2>{{titleLessonName}}</h2>
-            <click-counter></click-counter>
+            <h3>Lesson 3</h3>
+
+            <div class="list-group">
+                <plan-template v-for="plan in plans" :name="plan"></plan-template>
+            </div>
         </div>
     </div>
 
-    <script type="text/x-template" id="template-counter">
-        <button @click="count++">Count: {{count}}</button>
+    <script type="text/x-template" id="plan-template">
+        <div class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{name}}</h5>
+                <small>3 days ago</small>
+            </div>
+            <p class="mb-1">Some placeholder content in a paragraph.</p>
+            <small>And some small print.</small>
+        </div>
     </script>
     <script src="main.js"></script>
 </body>
