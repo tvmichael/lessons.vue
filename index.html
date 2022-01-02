@@ -12,12 +12,15 @@
             <h2>{{titleLessonName}}</h2>
             <h3>Lesson 3</h3>
 
-            <div class="list-group">
-                <plan-template v-for="plan in plans" :name="plan"></plan-template>
-            </div>
+            <plan-picker></plan-picker>
         </div>
     </div>
 
+    <script type="text/x-template" id="plan-picker-template">
+        <div class="list-group">
+            <plan-template v-for="plan in plans" :name="plan"></plan-template>
+        </div>
+    </script>
     <script type="text/x-template" id="plan-template">
         <div class="list-group-item list-group-item-action" aria-current="true">
             <div class="d-flex w-100 justify-content-between">

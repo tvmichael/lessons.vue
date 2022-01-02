@@ -2,12 +2,22 @@ const config = {
     data(){
         return {
             titleLessonName:'Components fundamental!',
-            plans: ['The single', 'The curious', 'The Addict']
         }
-    }
+    },
 };
 
 var vComponents = Vue.createApp(config)
+    .component('plan-picker', {
+        template: '#plan-picker-template',
+        data(){
+            return {
+                plans: ['The single', 'The curious', 'The Addict']
+            }
+        },
+        props:{
+
+        }
+    })
     .component('plan-template', {
         template: '#plan-template',
         props: {
