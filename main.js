@@ -8,7 +8,7 @@ const config = {
 
 var vComponents = Vue.createApp(config)
     .component('click-counter', {
-        template: `<button @click="count++">{{count}}</button>`,
+        template: '#template-counter',
         data(){
             return{
                 count:0
