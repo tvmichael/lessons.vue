@@ -8,44 +8,8 @@
 </head>
 <body>
     <div class="container">
-        <div id="shopping-list" class="col">
-            <div>
-                <h2>{{header || 'Welcome'}}</h2>
-                <button @click="editItemBtn(false)" v-if="editItem" class="btn btn-danger">Cancel</button>
-                <button @click="editItemBtn(true)" v-else class="btn btn-primary">Add new item</button>
-            </div>
+        <div id="components" class="col">
 
-            <div v-if="editItem">
-                <input
-                    @keyup.enter="addNewItem"
-                    type="text"
-                    v-model="newItem"
-                    placeholder="Add an item">
-                <button
-                    class="btn btn-primary"
-                    v-on:click="addNewItem">
-                    Save item
-                </button>
-                <div>
-                    <strong>Priority </strong>
-                    <label><input type="radio" v-model="newItemPriority" value="high">High </label>
-                    <label><input type="radio" v-model="newItemPriority" value="low">Low </label>
-                </div>
-                <div>
-                    <label><input type="checkbox" v-model="iceCreamFlavors" value="vanilla">Vanilla</label>
-                    <label><input type="checkbox" v-model="iceCreamFlavors" value="chocolate">Chocolate</label>
-                    <label><input type="checkbox" v-model="iceCreamFlavors" value="strawberry">Strawberry</label>
-                </div>
-                <p>{{newItem || '...'}}: {{newItemPriority}}</p>
-            </div>
-
-            <p v-if="items.length === 0">Empty!</p>
-            <ul v-else>
-                <li
-                    v-for="(item, i) in items"
-                    :key="i">
-                    {{item}}</li>
-            </ul>
         </div>
     </div>
     <script src="main.js"></script>
