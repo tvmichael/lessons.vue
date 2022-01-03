@@ -11,18 +11,24 @@
         <div id="components" class="col">
             <h2>{{titleLessonName}}</h2>
             <h3>Lesson 3</h3>
-
             <plan-picker></plan-picker>
+            <text-input></text-input>
         </div>
     </div>
 
     <script type="text/x-template" id="plan-picker-template">
         <div class="list-group">
-            <plan v-for="plan in plans" :name="plan"></plan>
+            <plan-picker-item
+                v-for="plan in plans"
+                :name="plan"
+                :selected="plan === selectedPlan"
+                v-on:select="selectPlan">
+            </plan-picker-item>
         </div>
     </script>
-    <script type="text/x-template" id="plan-template">
-        <div class="list-group-item list-group-item-action" aria-current="true">
+
+    <script type="text/x-template" id="plan-picker-item-template">
+        <div @click="select" :class="{'active': selected}" class="list-group-item list-group-item-action" aria-current="true">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">{{name}}</h5>
                 <small>3 days ago</small>
@@ -31,6 +37,14 @@
             <small>And some small print.</small>
         </div>
     </script>
+
+    <script type="text/x-template" id="text-input-template">
+        <div class="input-group">
+            <span class="input-group-text">With textarea</span>
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+        </div>
+    </script>
+
     <script src="main.js"></script>
 </body>
 </html>
