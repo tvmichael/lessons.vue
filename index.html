@@ -8,34 +8,25 @@
 </head>
 <body>
     <div id="app" class="ui container">
-        <h1>GitHub Profile</h1>
-        <github-user-card v-for="username in usernames" :username="username"></github-user-card>
+        <h1>Notification Center</h1>
+        <notification-message type="error" header="Oh no!">
+            <p>You flight <b>canceled</b></p>
+        </notification-message>
+        <notification-message type="info" header="Yes good!">
+            <p>You flight <b>canceled</b></p>
+        </notification-message>
     </div>
 
-    <script type="text/x-template" id="github-user-card-template">
-        <div class="ui card">
-            <div class="image">
-                <img :src="user.avatar_url">
+    <script type="text/x-template" id="notification-message-template">
+        <div class="ui message" :class="type" v-if="!hidden">
+            <i class="close icon" v-on:click="hide"></i>
+            <div class="header">
+                {{header}}
             </div>
-            <div class="content">
-                <a :href="`https://github.com/${username}`" class="header">{{user.name}}</a>
-                <div class="meta">
-                    <span class="date">Joined in {{user.created_at}}</span>
-                </div>
-                <div class="description">
-                    {{user.bio}}
-                </div>
-            </div>
-            <div class="extra content">
-                <a :href="`https://github.com/${username}?tab=followers`">
-                    <i class="user icon"></i>
-                    {{user.followers}} Friends
-                </a>
-            </div>
+            <slot></slot>
         </div>
     </script>
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
