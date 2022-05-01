@@ -2,31 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://unpkg.com/vue@next"></script>
     <title>Vue-3</title>
 </head>
 <body>
-    <div id="app" class="ui container">
-        <h1>Notification Center</h1>
-        <notification-message type="error" header="Oh no!">
-            <p>You flight <b>canceled</b></p>
-        </notification-message>
-        <notification-message type="info" header="Yes good!">
-            <p>You flight <b>canceled</b></p>
-        </notification-message>
-    </div>
-
-    <script type="text/x-template" id="notification-message-template">
-        <div class="ui message" :class="type" v-if="!hidden">
-            <i class="close icon" v-on:click="hide"></i>
-            <div class="header">
-                {{header}}
-            </div>
-            <slot></slot>
-        </div>
-    </script>
-
-    <script src="main.js"></script>
+    <div id="app"></div>
 </body>
 </html>
